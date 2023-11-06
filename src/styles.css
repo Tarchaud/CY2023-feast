@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;700&display=swap');
+
+:root{
+
+}
+
+html, body{
+    padding:0;
+    margin:0;
+    height:100%;
+    width:100%;
+    font-size:16px;
+    font-family: 'Raleway', sans-serif;
+}
+
+body > *{
+  padding : 10px 15px;
+}
+
+body  *{
+  box-sizing: border-box;
+}
+
+main{
+    width: 100vw;
+    height:calc(100vh - var(--menu) - var(--menu));
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+body > header, body > footer{
+   width: 1000vw;
+   height: var(--menu);
+}
