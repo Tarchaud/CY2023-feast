@@ -6,6 +6,9 @@ import { UsersComponent } from './pages/users/users.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { EvenementsComponent } from './pages/evenements/evenements.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
+import { RGPDComponent } from './pages/rgpd/rgpd.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { ErreurComponent } from './pages/erreur/erreur.component';
 
 const routes: Routes = [
   { path : '', component : AccueilComponent },
@@ -14,7 +17,10 @@ const routes: Routes = [
   { path : 'evenements' , component : EvenementsComponent },
   { path : 'inscription' , component : InscriptionComponent },
   { path : 'connexion' , component : ConnexionComponent },
-  { path : '**', redirectTo : '' }
+  { path : 'mentions' , component : RGPDComponent },
+  { path : 'rgpd' , component : RGPDComponent },
+  { path : 'contact' , component : ContactComponent },
+  { path : '**', component: ErreurComponent }
 ];
 
 @NgModule({

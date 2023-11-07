@@ -1,1 +1,17 @@
-<p>connexion works!</p>
+<section>
+  <h1>Connexion</h1>
+  <form (submit)="login()">
+    <fieldset>
+      <label>ID</label>
+      <input name="email" [(ngModel)]="id">
+    </fieldset>
+
+    <fieldset>
+      <label >Mot de passe</label>
+      <input type="password" name="password" [(ngModel)]="mdp">
+    </fieldset>
+
+    <button type="submit">Connexion</button>
+
+  </form>
+</section>

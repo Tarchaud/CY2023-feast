@@ -1,1 +1,21 @@
-<p>evenements works!</p>
+<table>
+  <thead>
+      <th>Titre</th>
+      <th>Nb. places</th>
+      <th>Date</th>
+      <th>Début</th>
+      <th>Fin</th>
+      <th>Infos</th>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let event of events.listeEvenements">
+      <td>{{ event.titre | uppercase }}</td>
+      <td>{{ event.places }}</td>
+      <td>{{ event.date | date:'M/d/yy' }}</td>
+      <td>{{ event.horaires.debut }}</td>
+      <td>{{ event.horaires.fin }}</td>
+      <td *ngIf="event.infos">{{ event.infos }}</td>
+    </tr>
+  </tbody>
+</table>
