@@ -1,8 +1,11 @@
 export interface UsersI {
   nom : string;
-  prenom ?: string;
+  prenom : string;
+  id ?: string;
   email : string;
+  token ?: string;
   statut : string;
+  infos ?: string;
 }
 
 export interface ContactI {

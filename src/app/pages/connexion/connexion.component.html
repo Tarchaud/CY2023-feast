@@ -3,12 +3,12 @@
   <form (submit)="login()">
     <fieldset>
       <label>ID</label>
-      <input name="email" [(ngModel)]="id">
+      <input  [(ngModel)]="auth.authID.id" name="email">
     </fieldset>
 
     <fieldset>
       <label >Mot de passe</label>
-      <input type="password" name="password" [(ngModel)]="mdp">
+      <input [(ngModel)]="auth.authID.mdp" type="password" name="password" >
     </fieldset>
 
     <button type="submit">Connexion</button>

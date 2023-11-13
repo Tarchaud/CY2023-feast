@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { EvenementI } from 'src/app/shared/models/evenement-i';
 import { EvenementsService } from 'src/app/shared/services/evenements.service';
 
 @Component({
@@ -8,5 +7,9 @@ import { EvenementsService } from 'src/app/shared/services/evenements.service';
   styleUrls: ['./evenements.component.css']
 })
 export class EvenementsComponent {
-  constructor(public events : EvenementsService) {}
+  filtre : string = '';
+
+  constructor(public events : EvenementsService) {
+    this.events.getEvenements();
+  }
 }

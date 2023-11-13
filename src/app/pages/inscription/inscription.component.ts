@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent {
+  nom : string = '';
+  prenom : string = '';
+  id : string = '';
+  email : string = '';
+  statut : string = '';
+  infos : string = '' ;
+  mdp : string = '';
 
+  singup() {
+    console.log("teztstt");
+
+  }
 }

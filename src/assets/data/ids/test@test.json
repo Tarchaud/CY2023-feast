@@ -1,0 +1,10 @@
+{
+  "nom" : "Test",
+  "prenom" : "Test",
+  "id" : "test",
+  "email" : "test@test.ch",
+  "infos" : "Truc de merde",
+  "token" : "bakrhzaer;azerjajaze:aer",
+  "statut" : "user"
+}
+

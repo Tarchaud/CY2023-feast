@@ -1,1 +1,38 @@
-<p>inscription works!</p>
+<section>
+  <h1>Inscription</h1>
+  <form (submit)="singup()">
+    <fieldset>
+      <label>Nom</label>
+      <input  [(ngModel)]="nom" name="nom">
+    </fieldset>
+
+    <fieldset>
+      <label>Prenom</label>
+      <input [(ngModel)]="prenom" name="prenom">
+    </fieldset>
+
+    <fieldset>
+      <label>Mot de passe</label>
+      <input [(ngModel)]="mdp" type="password" name="mdp" >
+    </fieldset>
+
+    <fieldset>
+      <label>id</label>
+      <input  [(ngModel)]="id" name="id">
+    </fieldset>
+
+
+    <fieldset>
+      <label>status</label>
+      <input  [(ngModel)]="statut" name="statut">
+    </fieldset>
+
+    <fieldset>
+      <label>info</label>
+      <input  [(ngModel)]="infos" name="infos">
+    </fieldset>
+
+    <button type="submit">S'inscrire</button>
+
+  </form>
+</section>

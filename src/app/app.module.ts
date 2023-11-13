@@ -14,15 +14,16 @@ import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { RGPDComponent } from './pages/rgpd/rgpd.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ErreurComponent } from './pages/erreur/erreur.component';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { EventsPipe } from './shared/pipes/events.pipe';
+import { SharedModule } from './shared/shared.module';
+import { EvenementComponent } from './pages/evenement/evenement.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     MenuComponent,
+    FooterComponent,
     AccueilComponent,
     UsersComponent,
     ProfilComponent,
@@ -31,13 +32,14 @@ import { HttpClientModule } from '@angular/common/http';
     ConnexionComponent,
     RGPDComponent,
     ContactComponent,
-    ErreurComponent
+    ErreurComponent,
+    EventsPipe,
+    EvenementComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

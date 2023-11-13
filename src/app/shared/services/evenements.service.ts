@@ -30,4 +30,13 @@ export class EvenementsService {
     this.http.post('asset/data/evenements.json',ev);
   }
 
+  /**
+   *
+   * @param id
+   * @returns
+   */
+  getEvenement(id:number):EvenementI{
+    return this.listeEvenements.filter(d => d.date == id)[0];
+  }
+
 }

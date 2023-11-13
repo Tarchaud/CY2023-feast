@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
@@ -10,13 +11,11 @@ export class ConnexionComponent {
   id : string = '';
   mdp : string = '';
 
-  constructor ( private user : UsersService) {}
+  constructor ( public auth : AuthService) {}
 
 
   login() {
-    this.user.authID.id = this.id;
-    this.user.authID.mdp = this.mdp
-    this.user.authentification();
+    this.auth.authentification();
   }
 
 }
