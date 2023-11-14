@@ -7,7 +7,7 @@ import { EvenementI } from '../models/evenement-i';
 export class EventsPipe implements PipeTransform {
 
   transform(listEvents: Array<EvenementI>, filtre : string): Array<EvenementI> {
-    return listEvents.filter(event => event.titre.toLowerCase().indexOf(filtre) > -1 );
+    return listEvents.filter(event => event.titre.toLowerCase().indexOf(filtre.toLowerCase()) > -1 );
   }
 
 }

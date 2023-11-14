@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
+//Modules
+import { SharedModule } from './shared/shared.module';
+
+//Pipes
+import { EventsPipe } from './shared/pipes/events.pipe';
+
+//Components
 import { AppComponent } from './app.component';
 import { FooterComponent } from './template/footer/footer.component';
 import { MenuComponent } from './template/menu/menu.component';
@@ -14,9 +22,11 @@ import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { RGPDComponent } from './pages/rgpd/rgpd.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ErreurComponent } from './pages/erreur/erreur.component';
-import { EventsPipe } from './shared/pipes/events.pipe';
-import { SharedModule } from './shared/shared.module';
 import { EvenementComponent } from './pages/evenement/evenement.component';
+
+//Interceptors
+import { TokenInterceptor } from './shared/securite/token.interceptor';
+import { Auth401Interceptor } from './shared/securite/auth401.interceptor';
 
 
 @NgModule({
@@ -41,7 +51,10 @@ import { EvenementComponent } from './pages/evenement/evenement.component';
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass : Auth401Interceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
