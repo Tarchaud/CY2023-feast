@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { FireUserI, UsersI } from '../models/users-i';
 import { Router } from '@angular/router';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, User } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, User, deleteUser } from '@angular/fire/auth';
 import { Firestore, collection, doc, getDoc, getDocs } from '@angular/fire/firestore';
 
 @Injectable({
@@ -83,6 +83,30 @@ export class AuthService {
       (er) => console.log(er)
 
     )
+  }
+
+  deleteUser(){
+    this.user.delete().then(
+      () => {
+        console.log('user supprimé');
+        this.authID = { id : '', mdp : '' };
+        this.router.navigateByUrl('/connexion');
+      }
+    ).catch(
+      er => console.log(er)
+    );
+  }
+
+  logOut(){
+    signOut(this.fire).then(
+      () => {
+        this.isLoggedIn = false;
+        this.authID = { id : '', mdp : '' };
+        this.router.navigateByUrl('/connexion');
+      }
+    ).catch(
+      er => console.log(er)
+    );
   }
 
 }

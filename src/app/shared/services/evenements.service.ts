@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { EvenementI } from '../models/evenement-i';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Firestore, collection, doc, getDoc, getDocs } from '@angular/fire/firestore';
+import { Firestore, collection, doc, getDoc, getDocs, addDoc } from '@angular/fire/firestore';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +25,16 @@ export class EvenementsService {
         console.log(querySnapshot);
         querySnapshot.forEach(
           (doc) => {
-            console.log(doc.id, " => ", doc.data());
+            console.log(doc.id, " => ", doc.data()); //TODO: clear
             const data = doc.data() as EvenementI;
             data.id = doc.id;
-            console.log('data' ,data);
+            console.log('data' ,data);//TODO: clear
 
             this.listeEvenements.push(data);
-            console.log(this.listeEvenements);
+            console.log(this.listeEvenements);//TODO: clear
           }
         );
+        this.listeEvent$.next(this.listeEvenements);
       }
     ).catch(
       (er) => console.log(er)
@@ -86,6 +88,15 @@ export class EvenementsService {
     console.log('event : ', event);
     // return event;
     // return this.listeEvenements.filter(d => d.date == id)[0];
+  }
+
+
+  addEvent(ev:NgForm){
+    addDoc(collection(this.store,'events'), ev).then(
+      () => console.log('ok')
+    ).catch(
+      er => console.log(er)
+    );
   }
 
 }

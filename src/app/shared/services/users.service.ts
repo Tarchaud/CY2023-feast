@@ -45,7 +45,10 @@ export class UsersService {
    */
   supprimeDoc(id:string){
     deleteDoc(doc(this.store, 'users', id)).then(
-      () => console.log('ok')
+      () => {
+        console.log('supprimé');
+        this.auth.deleteUser();
+      }
     ).catch(
       er => console.log(er)
     );
