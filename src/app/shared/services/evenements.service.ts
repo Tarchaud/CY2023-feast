@@ -1,42 +1,91 @@
 import { Injectable } from '@angular/core';
 import { EvenementI } from '../models/evenement-i';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Firestore, collection, doc, getDoc, getDocs } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EvenementsService {
   listeEvenements : Array<EvenementI> = [];
+  listeEvent$ : BehaviorSubject<Array<EvenementI>> = new BehaviorSubject([] as Array<EvenementI>);
+  exempleObservable$ : Observable<Array<EvenementI>> = new Observable();
 
-  constructor( private http : HttpClient) {  }
+  constructor( private http : HttpClient, private store:Firestore) {  }
 
+  /**
+   * Recpération de tout les evenements
+   */
   getEvenements(){
-    this.http.get<Array<EvenementI>>('assets/data/evenements.json').subscribe({
-      next: (ev) => {
-        console.log('Donne reçues du JSON', ev);
-        this.listeEvenements = ev;
+    this.listeEvenements = [];
+    getDocs(collection(this.store,'events')).then(
+      (querySnapshot) => {
+        console.log(querySnapshot);
+        querySnapshot.forEach(
+          (doc) => {
+            console.log(doc.id, " => ", doc.data());
+            const data = doc.data() as EvenementI;
+            data.id = doc.id;
+            console.log('data' ,data);
 
-      },
-      error : (er) => console.log(er),
-      complete : () => console.log("les evenements ont été chargé")
-    })
+            this.listeEvenements.push(data);
+            console.log(this.listeEvenements);
+          }
+        );
+      }
+    ).catch(
+      (er) => console.log(er)
+    );
+
+    // this.http.get<Array<EvenementI>>('assets/data/evenements.json').subscribe({
+    //   next: (ev) => {
+    //     console.log('Donne reçues du JSON', ev);
+    //     this.listeEvenements = ev;
+    //     this.listeEvent$.next(ev);
+    //   },
+    //   error : (er) => console.log(er),
+    //   complete : () => console.log("les evenements ont été chargé")
+    // })
   }
 
   /**
    *
    * @param ev
    */
-  setEvenement(ev:EvenementI){
-    this.http.post('asset/data/evenements.json',ev);
+  setEvenement(ev:EvenementI){ //TODO : a faire
+
+    // this.http.post('asset/data/evenements.json',ev);
   }
 
   /**
-   *
+   * Récpération d'un evenement
    * @param id
-   * @returns
    */
-  getEvenement(id:number):EvenementI{
-    return this.listeEvenements.filter(d => d.date == id)[0];
+  getEvenement(id:string):Promise<EvenementI>{
+    // let event : EvenementI = {}  as EvenementI;;
+    return getDoc(doc(this.store,'events',id)).then(
+      (doc) => {
+        if(doc.exists()){
+          let event : EvenementI;
+          console.log(doc.data()); //TODO : clear
+          event = doc.data() as EvenementI;
+          event.id = doc.id;
+          return event;
+        }else{
+          console.log('Aucun document trouvé');
+          return {} as EvenementI;
+        }
+      }
+    ).catch(
+      (er) => {
+        console.log(er);
+        return {}  as EvenementI;;
+      }
+    )
+    console.log('event : ', event);
+    // return event;
+    // return this.listeEvenements.filter(d => d.date == id)[0];
   }
 
 }

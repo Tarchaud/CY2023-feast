@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cytech-cloud": {
+      "hosting": {
+        "CY2023-feast": [
+          "cytech-cloud"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cytech-cloud"
+  }
+}

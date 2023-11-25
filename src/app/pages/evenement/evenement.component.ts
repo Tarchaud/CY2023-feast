@@ -10,16 +10,26 @@ import { EvenementsService } from 'src/app/shared/services/evenements.service';
 })
 export class EvenementComponent  implements OnInit{
   event !: EvenementI;
-  param !: number;
+  param !: string;
+  loader : boolean = true;
 
   constructor(public activeRoute : ActivatedRoute, public evenements : EvenementsService) {
-   }
+    this.param = this.activeRoute.snapshot.paramMap.get('event') || '';
+    console.log('params : ', this.param);
+    this.evenements.getEvenement(this.param).then(
+      (ev) => {
+        this.event = ev;
+        this.loader = false;
+        console.log('event : ', this.event);
+      }
+    ).catch(
+      (er) => console.log(er)
+    );
+    console.log('event : ', this.evenements.listeEvenements);
+
+  }
 
   ngOnInit(){
-    this.param = Number(this.activeRoute.snapshot.paramMap.get('event')) || -1;
-    console.log('params : ', this.param);
-    this.event = this.evenements.getEvenement(this.param);
-    console.log('params : ', this.evenements.listeEvenements);
   }
 
 }

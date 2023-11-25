@@ -1,1 +1,5 @@
-<p>profil works!</p>
+<h1>Salut {{user.nom | uppercase}} {{user.prenom}}</h1>
+<p>Email : {{user.email}}</p>
+
+<img [src]="user.media?.src" [alt]="user.media?.alt" >
+

@@ -2,10 +2,11 @@
   <fieldset>
     <input type="text" [(ngModel)]="filtre"  placeholder="Filtre">
   </fieldset>
-  <table>
+  <table *ngIf="events.listeEvenements.length > 0">
     <thead>
         <th>N°</th>
         <th>Titre</th>
+        <th>Affiche</th>
         <th>Nb. places</th>
         <th>Début</th>
         <th>Fin</th>
@@ -13,18 +14,22 @@
         <th>Infos</th>
     </thead>
     <tbody>
-      <tr *ngFor="let event of events.listeEvenements | events:filtre ; let i = index">
+      <tr *ngFor="let event of events.listeEvenements | events:filtre  ; let i = index">
         <td>{{ i }}</td>
-        <td><a [routerLink]="['/evenement',event.date]">{{ event.titre | uppercase }}</a></td>
+        <td><a [routerLink]="['/evenement',event.id]">{{ event.titre | uppercase }}</a></td>
+        <td>
+          <img [src]="event.media.src" [alt]="event.media.alt" *ngIf="event.media">
+          <!-- <img src="{{notFound}}" alt="{{event.titre}}" *ngIf="!event.img"> -->
+        </td>
         <td>{{ event.places }}</td>
         <td>{{ event.horaires.debut }}</td>
         <td>{{ event.horaires.fin }}</td>
         <td>{{ event.date | date:'MMM d, y, h:mm:ss a' }}</td>
-        <td *ngIf="event.infos">{{ event.infos }}</td>
-        <td *ngIf="!event.infos"> </td>
+        <td *ngIf="event.infos">{{ event.infos }}</td><td *ngIf="!event.infos"> </td>
       </tr>
     </tbody>
   </table>
+  <!-- <button (click)="arriere()">></button>
+  <button (click)="avant()"><</button> -->
 
 </section>
-

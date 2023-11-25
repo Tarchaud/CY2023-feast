@@ -1,0 +1,59 @@
+/* Stylisation de la section */
+section {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Style pour le titre h2 */
+h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Style pour la citation */
+blockquote {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* Style pour les informations sur l'événement */
+p {
+  margin-bottom: 8px;
+}
+
+/* Style spécifique pour le texte "Place" */
+p:nth-of-type(3)::before {
+  content: "Lieu : ";
+  font-weight: bold;
+}
+
+/* Style spécifique pour le texte "Date" */
+p:nth-of-type(4)::before {
+  content: "Date : ";
+  font-weight: bold;
+}
+
+/* Style spécifique pour le texte "Début" */
+p:nth-of-type(5)::before {
+  content: "Début : ";
+  font-weight: bold;
+}
+
+/* Style spécifique pour le texte "Fin" */
+p:nth-of-type(6)::before {
+  content: "Fin : ";
+  font-weight: bold;
+}
+
+/* Style pour l'image */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-top: 15px;
+}

@@ -2,30 +2,37 @@
   <h1>Besion d'infos ? Pas assez de RedBull ?</h1>
   <h2>Laissez-moi un message</h2>
   <form (submit)="coucouToi()">
-    <label >Nom</label>
-    <input name="nom" [(ngModel)]="contact.nom" #ctlNom="ngModel" required minlength="8">
-    <span *ngIf="ctlNom.value.length < 8 ">le champ doit avoir au moins 8 carctères</span>
+    <fieldset>
+      <label >Nom</label>
+      <input name="nom" [(ngModel)]="contact.nom" #ctlNom="ngModel" required minlength="8">
 
-    <label >Prenom</label>
-    <input name="prenom" [(ngModel)]="contact.prenom">
+      <label >Prenom</label>
+      <input name="prenom" [(ngModel)]="contact.prenom">
+    </fieldset>
 
-    <label for="">Adresse (rue)</label>
-    <input name="rue" [(ngModel)]="contact.adresse.rue">
+    <fieldset>
+      <label for="">Adresse (rue)</label>
+      <input name="rue" [(ngModel)]="contact.adresse.rue">
 
-    <label >Code Postal</label>
-    <input name="codePostal" [(ngModel)]="contact.adresse.codePostal">
+      <label >Code Postal</label>
+      <input name="codePostal" [(ngModel)]="contact.adresse.codePostal">
 
-    <label >Ville</label>
-    <input name="ville" [(ngModel)]="contact.adresse.ville">
+      <label >Ville</label>
+      <input name="ville" [(ngModel)]="contact.adresse.ville">
+    </fieldset>
 
-    <label >Téléphone</label>
-    <input name="tel" [(ngModel)]="contact.tel">
+    <fieldset>
+      <label >Téléphone</label>
+      <input name="tel" [(ngModel)]="contact.tel">
 
-    <label >Email</label>
-    <input name="email" [(ngModel)]="contact.email">
+      <label >Email</label>
+      <input name="email" [(ngModel)]="contact.email">
+    </fieldset>
 
-    <label >Commentaire ?</label>
-    <input name="infos"  [(ngModel)]="contact.infos">
+    <fieldset>
+      <label >Commentaire ?</label>
+      <input name="infos" type="text"  [(ngModel)]="contact.infos">
+    </fieldset>
 
 
     <button type="submit">Envoyer mon message</button>

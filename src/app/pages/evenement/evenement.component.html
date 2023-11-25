@@ -1,4 +1,9 @@
-<section>
+<section *ngIf="!loader">
   <h2>{{ event.titre }}</h2>
   <blockquote>{{ event.infos }}</blockquote>
+  <p>Places : {{event.places}}</p>
+  <p>Date : {{event.date | date:'dd-mm-aaaa'}}</p>
+  <p>Début : {{event.horaires.debut}}</p>
+  <p>Fin : {{event.horaires.fin}}</p>
+  <img [src]="event.media.src" [alt]="event.media.alt" *ngIf="event.media">
 </section>

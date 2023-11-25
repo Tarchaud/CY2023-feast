@@ -1,17 +1,19 @@
-<table>
-  <thead>
-    <th>Nom</th>
-    <th>Prénom</th>
-    <th>Email</th>
-    <th>statut</th>
-  </thead>
+<section>
+  <table *ngIf="users.usersList.length > 0">
+    <thead>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>statut</th>
+    </thead>
 
-  <tbody>
-    <tr *ngFor="let u of listeUsers">
-      <td>{{ u.nom | uppercase }}</td>
-      <td>{{ u.prenom }}</td>
-      <td>{{ u.email }}</td>
-      <td><span *ngIf="u.statut == 'user'" >{{ u.statut }}</span></td>
-    </tr>
-  </tbody>
-</table>
+    <tbody>
+      <tr *ngFor="let u of users.usersList">
+        <td>{{ u.nom | uppercase }}</td>
+        <td>{{ u.prenom }}</td>
+        <td>{{ u.email }}</td>
+        <td><span *ngIf="u.statut == 'user'" >{{ u.statut }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
