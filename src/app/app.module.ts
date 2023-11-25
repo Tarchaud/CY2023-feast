@@ -48,7 +48,6 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     RGPDComponent,
     ContactComponent,
     ErreurComponent,
-    EventsPipe,
     EvenementComponent
   ],
   imports: [

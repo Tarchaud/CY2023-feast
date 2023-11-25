@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { EvenementI } from '../models/evenement-i';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Firestore, collection, doc, getDoc, getDocs, addDoc } from '@angular/fire/firestore';
+import { Firestore, collection, doc, getDoc, getDocs, addDoc, deleteDoc } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 
 @Injectable({
@@ -90,9 +90,16 @@ export class EvenementsService {
     // return this.listeEvenements.filter(d => d.date == id)[0];
   }
 
-
-  addEvent(ev:NgForm){
+  addEvent(ev:any){
     addDoc(collection(this.store,'events'), ev).then(
+      () => console.log('ok')
+    ).catch(
+      er => console.log(er)
+    );
+  }
+
+  deleteEvent(id:string){
+    deleteDoc(doc(this.store,'events',id)).then(
       () => console.log('ok')
     ).catch(
       er => console.log(er)

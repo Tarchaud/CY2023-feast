@@ -18,13 +18,13 @@
         <td>{{ i }}</td>
         <td><a [routerLink]="['/evenement',event.id]">{{ event.titre | uppercase }}</a></td>
         <td>
-          <img [src]="event.media.src" [alt]="event.media.alt" *ngIf="event.media">
+          <img [src]="event.media.src" [alt]="event.media.alt" *ngIf="event.media && event.media.src != ''">
           <!-- <img src="{{notFound}}" alt="{{event.titre}}" *ngIf="!event.img"> -->
         </td>
         <td>{{ event.places }}</td>
         <td>{{ event.horaires.debut }}</td>
         <td>{{ event.horaires.fin }}</td>
-        <td>{{ event.date | date:'MMM d, y, h:mm:ss a' }}</td>
+        <td>{{ event.date | date:'MMM d' }}</td>
         <td *ngIf="event.infos">{{ event.infos }}</td><td *ngIf="!event.infos"> </td>
       </tr>
     </tbody>

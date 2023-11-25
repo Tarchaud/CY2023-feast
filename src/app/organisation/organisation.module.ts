@@ -8,6 +8,7 @@ import { OrgaStocksComponent } from './pages/orga-stocks/orga-stocks.component';
 import { OrgaEventsComponent } from './pages/orga-events/orga-events.component';
 import { OrganisationComponent } from './organisation/organisation.component';
 import { SharedModule } from '../shared/shared.module';
+import { AddEventComponent } from './pages/add-event/add-event.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     OrgaStocksComponent,
     OrgaEventsComponent,
     OrganisationComponent,
+    AddEventComponent
   ],
   imports: [
     CommonModule,

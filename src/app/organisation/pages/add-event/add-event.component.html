@@ -1,0 +1,41 @@
+<section>
+  <form (submit)="add(ctlf)" #ctlf="ngForm">
+    <h1>Ajout d'un évênement</h1>
+    <fieldset>
+      <label>Titre* </label>
+      <input name="titre" required ngModel>
+    </fieldset>
+
+    <fieldset>
+      <label >Date* </label>
+      <input type="date" name="date" required ngModel>
+    </fieldset>
+
+    <fieldset>
+      <label>Heure de début* </label>
+      <input type="time" name="debut" required ngModel>
+    </fieldset>
+
+    <fieldset>
+      <label>Heure de fin* </label>
+      <input type="time" name="fin" required ngModel>
+    </fieldset>
+
+    <fieldset>
+      <label>Nombre de places* </label>
+      <input type="number" name="places" required ngModel>
+    </fieldset>
+
+    <fieldset>
+      <label>Infos </label>
+      <textarea name="infos" ngModel></textarea>
+    </fieldset>
+
+    <fieldset>
+      <label>Affiche </label>
+      <input type="text" name="media_url" placeholder="Url de l'affiche" ngModel>
+    </fieldset>
+
+    <button type="submit" [disabled]="!ctlf.valid">Ajouter l'évênement</button>
+  </form>
+</section>
