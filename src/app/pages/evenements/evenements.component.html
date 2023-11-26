@@ -19,7 +19,6 @@
         <td><a [routerLink]="['/evenement',event.id]">{{ event.titre | uppercase }}</a></td>
         <td>
           <img [src]="event.media.src" [alt]="event.media.alt" *ngIf="event.media && event.media.src != ''">
-          <!-- <img src="{{notFound}}" alt="{{event.titre}}" *ngIf="!event.img"> -->
         </td>
         <td>{{ event.places }}</td>
         <td>{{ event.horaires.debut }}</td>

@@ -53,3 +53,10 @@ export interface MetadataI {
   lastLoginAt : string;
   lastSignInTime : string;
 }
+
+export interface ParticipantI {
+  idUser : string;
+  nom : string;
+  prenom : string;
+  event : string;
+}

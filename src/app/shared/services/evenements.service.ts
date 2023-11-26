@@ -3,7 +3,6 @@ import { EvenementI } from '../models/evenement-i';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Firestore, collection, doc, getDoc, getDocs, addDoc, deleteDoc, setDoc } from '@angular/fire/firestore';
-import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
