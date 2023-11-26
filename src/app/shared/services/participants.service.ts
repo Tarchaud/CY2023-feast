@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, getDocs, query, where } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, deleteDoc, getDocs, query, where } from '@angular/fire/firestore';
 import { ParticipantI } from '../models/users-i';
 
 @Injectable({
@@ -63,4 +63,30 @@ export class ParticipantsService {
       throw error;
     }
   }
+
+  async deleteParticipation(idEvent: string, idUser: string): Promise<void> {
+    try {
+      const q = query(collection(this.store, 'participations'),
+                      where('event', '==', idEvent),
+                      where('idUser', '==', idUser));
+
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.size === 0) {
+        console.log('Aucune participation trouvée pour l\'utilisateur avec l\'ID', idUser, 'à l\'événement avec l\'ID', idEvent);
+        return;
+      }
+
+      // Supprimer le premier document correspondant à la requête
+      const docToDelete = querySnapshot.docs[0];
+      await deleteDoc(docToDelete.ref);
+
+      console.log('Participation de l\'utilisateur avec l\'ID', idUser, 'à l\'événement avec l\'ID', idEvent, 'supprimée avec succès');
+    } catch (error) {
+      console.error('Erreur lors de la suppression de la participation:', error);
+      throw error;
+    }
+  }
+
+
 }

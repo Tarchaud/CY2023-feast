@@ -51,7 +51,29 @@ export class EvenementComponent  implements OnInit{
 
   inscription(){
     const participant = { idUser : this.auth.user.uid ,nom : this.auth.profil.nom, prenom : this.auth.profil.prenom, event : this.param};
-    this.participants.inscription(participant);
+    try {
+      console.log('avant incristpion');
+
+      this.participants.inscription(participant);
+      console.log('après incristpion');
+
+      this.getCountIncrits();
+      this.isInscrit = true;
+
+    } catch (error) {
+
+    }
+  }
+
+  desincrire(){
+    this.participants.deleteParticipation(this.param, this.auth.user.uid).then(
+      () => {
+        this.isInscrit = false;
+        this.getCountIncrits();
+      }
+    ).catch(
+      (er) => console.log(er)
+    );
   }
 
   getCountIncrits(){
