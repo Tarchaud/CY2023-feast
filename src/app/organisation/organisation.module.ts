@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { OrganisationRoutingModule } from './organisation-routing.module';
+//Components
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { OrgaMenuComponent } from './template/orga-menu/orga-menu.component';
 import { OrgaStocksComponent } from './pages/orga-stocks/orga-stocks.component';
 import { OrgaEventsComponent } from './pages/orga-events/orga-events.component';
 import { OrganisationComponent } from './organisation/organisation.component';
-import { SharedModule } from '../shared/shared.module';
 import { AddEventComponent } from './pages/add-event/add-event.component';
+import { EditEventComponent } from './pages/edit-event/edit-event.component';
 
+//Modules
+import { SharedModule } from '../shared/shared.module';
+import { OrganisationRoutingModule } from './organisation-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { AddEventComponent } from './pages/add-event/add-event.component';
     OrgaStocksComponent,
     OrgaEventsComponent,
     OrganisationComponent,
-    AddEventComponent
+    AddEventComponent,
+    EditEventComponent
   ],
   imports: [
     CommonModule,

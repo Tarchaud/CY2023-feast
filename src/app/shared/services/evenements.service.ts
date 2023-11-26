@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { EvenementI } from '../models/evenement-i';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Firestore, collection, doc, getDoc, getDocs, addDoc, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, collection, doc, getDoc, getDocs, addDoc, deleteDoc, setDoc } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 
 @Injectable({
@@ -89,7 +89,10 @@ export class EvenementsService {
     // return event;
     // return this.listeEvenements.filter(d => d.date == id)[0];
   }
-
+  /**
+   *
+   * @param ev
+   */
   addEvent(ev:any){
     addDoc(collection(this.store,'events'), ev).then(
       () => console.log('ok')
@@ -98,8 +101,24 @@ export class EvenementsService {
     );
   }
 
+  /**
+   *
+   * @param id
+   */
   deleteEvent(id:string){
     deleteDoc(doc(this.store,'events',id)).then(
+      () => console.log('ok')
+    ).catch(
+      er => console.log(er)
+    );
+  }
+
+  updateEvent(id:string, ev:any){
+    console.log('id : ', id); //TODO : clear
+    console.log('ev : ', ev); //TODO : clear
+    const eventDoc = doc(this.store,'events',id);
+    setDoc(eventDoc, ev, {merge:true})
+    .then(
       () => console.log('ok')
     ).catch(
       er => console.log(er)

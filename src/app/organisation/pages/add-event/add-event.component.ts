@@ -16,7 +16,7 @@ export class AddEventComponent {
 
     const event = {
       titre: form.value.titre,
-      date: Date.parse(form.value.date),
+      date: form.value.date,
       horaires: {
         debut: form.value.debut,
         fin: form.value.fin

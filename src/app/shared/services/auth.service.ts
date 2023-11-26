@@ -60,6 +60,7 @@ export class AuthService {
       infos => {
         this.user = infos.user;
         this.isLoggedIn = true;
+        this.profil = { nom : '', prenom : '', email : this.authID.id, statut : 'user' };
         //Go form compléter profile
         this.router.navigateByUrl('/inscription');
       }

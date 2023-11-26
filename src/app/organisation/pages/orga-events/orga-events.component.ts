@@ -27,7 +27,7 @@ export class OrgaEventsComponent implements OnInit {
   }
 
   editEvent(id : string){
-    this.router.navigate(['organisation','events',id]);
+    this.router.navigate(['organisation','events','edit',id]);
   }
 
 }

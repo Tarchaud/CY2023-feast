@@ -26,7 +26,7 @@
       <input name="prenom" ngModel required>
     </fieldset>
 
-    <input hidden name="statut" [ngModel]="auth.profil.statut ? auth.profil.statut : 'user' ">
+    <input hidden name="statut" [ngModel]="auth.profil!.statut ? auth.profil.statut : 'user' ">
     <input hidden name="email" [ngModel]="auth.user.email">
 
     <button type="submit" [disabled]="!ctlf.valid">Compléter</button>

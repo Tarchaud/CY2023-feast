@@ -1,0 +1,41 @@
+<section>
+  <form (submit)="edit(ctlf)" *ngIf="!loader" #ctlf="ngForm">
+    <h1>Editer un évênement</h1>
+    <fieldset>
+      <label>Titre* </label>
+      <input type="text" name="titre" required [ngModel]="event.titre">
+    </fieldset>
+
+    <fieldset>
+      <label >Date* </label>
+      <input type="date" name="date" required [ngModel]="event.date">
+    </fieldset>
+
+    <fieldset>
+      <label>Heure de début* </label>
+      <input type="time" name="debut" required [ngModel]="event.horaires.debut">
+    </fieldset>
+
+    <fieldset>
+      <label>Heure de fin* </label>
+      <input type="time" name="fin" required [ngModel]="event.horaires.fin">
+    </fieldset>
+
+    <fieldset>
+      <label>Nombre de places* </label>
+      <input type="number" name="places" required [ngModel]="event.places">
+    </fieldset>
+
+    <fieldset>
+      <label>Infos </label>
+      <textarea name="infos" [ngModel]="event.infos"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <label>Affiche </label>
+      <input type="text" name="media_url" placeholder="Url de l'affiche" [ngModel]="event.media?.src">
+    </fieldset>
+
+    <button type="submit" [disabled]="!ctlf.valid">Mettre à jour l'évênement</button>
+  </form>
+</section>
