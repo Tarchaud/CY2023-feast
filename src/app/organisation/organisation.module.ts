@@ -13,6 +13,9 @@ import { EditEventComponent } from './pages/edit-event/edit-event.component';
 //Modules
 import { SharedModule } from '../shared/shared.module';
 import { OrganisationRoutingModule } from './organisation-routing.module';
+import { StocksPipe } from './shared/pipes/stocks.pipe';
+import { EditStockComponent } from './pages/edit-stock/edit-stock.component';
+import { AddStockComponent } from './pages/add-stock/add-stock.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { OrganisationRoutingModule } from './organisation-routing.module';
     OrgaEventsComponent,
     OrganisationComponent,
     AddEventComponent,
-    EditEventComponent
+    EditEventComponent,
+    StocksPipe,
+    EditStockComponent,
+    AddStockComponent
   ],
   imports: [
     CommonModule,

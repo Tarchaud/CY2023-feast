@@ -1,0 +1,16 @@
+<section>
+  <form (submit)="addStock(ctlf.value)" #ctlf="ngForm">
+    <h1>Ajout un produit dans le stock</h1>
+    <fieldset>
+      <label>Nom du produit* </label>
+      <input type="text" name="nom" required ngModel>
+    </fieldset>
+
+    <fieldset>
+      <label >Quantité* </label>
+      <input type="number" name="quantite" required ngModel>
+    </fieldset>
+
+    <button type="submit" [disabled]="!ctlf.valid">Ajouter le produit</button>
+  </form>
+</section>

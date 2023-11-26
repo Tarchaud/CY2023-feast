@@ -39,16 +39,6 @@ export class EvenementsService {
     ).catch(
       (er) => console.log(er)
     );
-
-    // this.http.get<Array<EvenementI>>('assets/data/evenements.json').subscribe({
-    //   next: (ev) => {
-    //     console.log('Donne reçues du JSON', ev);
-    //     this.listeEvenements = ev;
-    //     this.listeEvent$.next(ev);
-    //   },
-    //   error : (er) => console.log(er),
-    //   complete : () => console.log("les evenements ont été chargé")
-    // })
   }
 
   /**
@@ -65,7 +55,6 @@ export class EvenementsService {
    * @param id
    */
   getEvenement(id:string):Promise<EvenementI>{
-    // let event : EvenementI = {}  as EvenementI;;
     return getDoc(doc(this.store,'events',id)).then(
       (doc) => {
         if(doc.exists()){
@@ -85,9 +74,6 @@ export class EvenementsService {
         return {}  as EvenementI;;
       }
     )
-    console.log('event : ', event);
-    // return event;
-    // return this.listeEvenements.filter(d => d.date == id)[0];
   }
   /**
    *

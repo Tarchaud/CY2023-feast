@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EvenementI } from 'src/app/shared/models/evenement-i';
 import { EvenementsService } from 'src/app/shared/services/evenements.service';
 
@@ -15,7 +15,7 @@ export class EditEventComponent implements OnInit{
   loader : boolean = true;
 
 
-  constructor(private activeRoute : ActivatedRoute, public eventService : EvenementsService) {
+  constructor(private activeRoute : ActivatedRoute, public eventService : EvenementsService, private  router : Router) {
     this.eventId = this.activeRoute.snapshot.paramMap.get('idEvent') || '';
     console.log('params : ', this.eventId);
     this.eventService.getEvenement(this.eventId).then(
@@ -49,6 +49,8 @@ export class EditEventComponent implements OnInit{
       }
     };
     this.eventService.updateEvent(this.eventId, event);
+    this.router.navigate(['organisation','events']);
+
   }
 
 }
