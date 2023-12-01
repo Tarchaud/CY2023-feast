@@ -18,12 +18,12 @@
     <h1>Compléter mon profil</h1>
     <fieldset>
       <label>Nom</label>
-      <input name="nom" ngModel required>
+      <input name="nom"  required [ngModel]="auth.profil.nom ? auth.profil.nom : ''">
     </fieldset>
 
     <fieldset>
       <label>Prénom</label>
-      <input name="prenom" ngModel required>
+      <input name="prenom" required [ngModel]="auth.profil.prenom ? auth.profil.prenom : ''">
     </fieldset>
 
     <input hidden name="statut" [ngModel]="auth.profil!.statut ? auth.profil.statut : 'user' ">

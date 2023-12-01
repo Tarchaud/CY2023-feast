@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { FireUserI, UsersI } from '../models/users-i';
+import { UsersI } from '../models/users-i';
 import { Router } from '@angular/router';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, User, deleteUser } from '@angular/fire/auth';
 import { Firestore, collection, doc, getDoc, getDocs } from '@angular/fire/firestore';
@@ -82,7 +82,6 @@ export class AuthService {
       }
     ).catch(
       (er) => console.log(er)
-
     )
   }
 
