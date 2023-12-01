@@ -1,0 +1,20 @@
+<section>
+  <h2>Liste des utilisateurs</h2>
+  <table *ngIf="users.usersList.length > 0">
+    <thead>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>statut</th>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let u of users.usersList">
+        <td>{{ u.nom | uppercase }}</td>
+        <td>{{ u.prenom }}</td>
+        <td>{{ u.email }}</td>
+        <td><span>{{ u.statut }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>

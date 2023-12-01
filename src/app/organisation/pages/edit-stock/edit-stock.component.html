@@ -1,0 +1,17 @@
+<section>
+  <div class="spinner" *ngIf="loader"></div>
+  <form (submit)="updateStock(ctlf.value)" *ngIf="!loader" #ctlf="ngForm">
+    <h1>Ajout un produit dans le stock</h1>
+    <fieldset>
+      <label>Nom du produit* </label>
+      <input type="text" name="nom" required [ngModel]="stock.nom">
+    </fieldset>
+
+    <fieldset>
+      <label >Quantité* </label>
+      <input type="number" name="quantite" required [ngModel]="stock.quantite">
+    </fieldset>
+
+    <button type="submit" [disabled]="!ctlf.valid">Mettre à jour le produit</button>
+  </form>
+</section>

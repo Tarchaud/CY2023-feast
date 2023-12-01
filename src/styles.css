@@ -1,0 +1,177 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;700&display=swap');
+
+:root{
+    --menu:60px;
+    --bleu:#3498db;
+    --vert:#005C53;
+    --vertClair:#9FC131;
+    --jaune:#DBF227;
+    --clair:white;
+    --gris:var(--gris);
+}
+
+html, body{
+  padding:0;
+  margin:0;
+  height:100%;
+  width:100%;
+  font-size:16px;
+  font-family: 'Raleway', sans-serif;
+  overflow:hidden;
+  display:flex;
+  flex-flow: column nowrap;
+}
+
+main{
+  flex-grow: 1;
+  width: 100vw;
+  /* padding-top: 20px; */
+  height:calc(100vh - var(--menu) - var(--menu));
+  overflow-y:auto;
+  overflow-x:hidden;
+  display:flex;
+}
+
+body > header, body > footer{
+   width: 1000vw;
+   height: var(--menu);
+}
+
+:host ::ng-deep {
+  width:100vw;
+}
+
+footer{
+
+  background-color: var(--bleu);
+  height: var(--menu);
+  color:var(--clair);
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0 20px;
+}
+
+header {
+  background-color: var(--bleu);
+  height: var(--menu);
+  color: var(--clair);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+}
+
+nav > ul {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 0;
+  list-style-type: none;
+}
+
+nav > ul > li {
+  margin-right: 15px;
+  text-decoration: none;
+  color: var(--clair);
+  font-weight: bold;
+}
+
+
+nav > ul > li:hover {
+  color: var(--jaune);
+}
+
+table {
+
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+
+input {
+  max-width: 190px;
+  background-color: #f5f5f5;
+  color: #242424;
+  padding: .15rem .5rem;
+  min-height: 40px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  line-height: 1.15;
+  box-shadow: 0px 10px 20px -18px;
+}
+
+input:focus {
+  border-bottom: 2px solid #5b5fc7;
+  border-radius: 4px 4px 2px 2px;
+}
+
+input:hover {
+  outline: 1px solid lightgrey;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+
+/* Style pour le spinner */
+.spinner {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  border: 4.5px solid #0000;
+  border-radius: 50%;
+  border-color: #dbdcef #0000;
+  animation: spinner-e04l1k 1s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2.2px;
+  border: inherit;
+  border-radius: 50%;
+}
+
+.spinner::before {
+  border-color: #474bff #0000;
+  animation: inherit;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+}
+
+.spinner::after {
+  margin: 8.9px;
+}
+
+@keyframes spinner-e04l1k {
+  100% {
+    transform: rotate(1turn);
+  }
+}

@@ -1,0 +1,42 @@
+<section>
+  <h1>Besion d'infos ? Pas assez de RedBull ?</h1>
+  <h2>Laissez-moi un message</h2>
+  <form (submit)="coucouToi()">
+    <fieldset>
+      <label >Nom</label>
+      <input name="nom" [(ngModel)]="contact.nom" #ctlNom="ngModel" required minlength="8">
+
+      <label >Prenom</label>
+      <input name="prenom" [(ngModel)]="contact.prenom">
+    </fieldset>
+
+    <fieldset>
+      <label for="">Adresse (rue)</label>
+      <input name="rue" [(ngModel)]="contact.adresse.rue">
+
+      <label >Code Postal</label>
+      <input name="codePostal" [(ngModel)]="contact.adresse.codePostal">
+
+      <label >Ville</label>
+      <input name="ville" [(ngModel)]="contact.adresse.ville">
+    </fieldset>
+
+    <fieldset>
+      <label >Téléphone</label>
+      <input name="tel" [(ngModel)]="contact.tel">
+
+      <label >Email</label>
+      <input name="email" [(ngModel)]="contact.email">
+    </fieldset>
+
+    <fieldset>
+      <label >Commentaire ?</label>
+      <input name="infos" type="text"  [(ngModel)]="contact.infos">
+    </fieldset>
+
+
+    <button type="submit">Envoyer mon message</button>
+    <button type="reset">J'ai changer d'avis</button>
+
+  </form>
+</section>

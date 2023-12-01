@@ -1,0 +1,9 @@
+<nav>
+  <ul>
+    <li routerLink="/mentions">Mentions légals</li>
+    <li routerLink="/rgpd">RGPD</li>
+    <li routerLink="/contact">Contact</li>
+    <li routerLink="/organisation" *ngIf="auth.isLoggedIn && (auth.profil.statut == 'organisateur' || auth.profil.statut == 'admin')">Tableau d'Organistaion</li>
+    <li routerLink="/admin" *ngIf="auth.isLoggedIn &&  auth.profil.statut == 'admin'">Tableau d'Admin</li>
+  </ul>
+</nav>

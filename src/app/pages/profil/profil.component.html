@@ -1,0 +1,9 @@
+<h1>Salut {{user.nom | uppercase}} {{user.prenom}}</h1>
+<p>Email : {{user.email}}</p>
+
+<img [src]="user.media?.src" [alt]="user.media?.alt" >
+
+
+<!-- <button (click)="auth.logout()">Se déconnecter</button> -->
+<!-- <button (click)="auth.deleteUser()">Supprimer mon compte</button> -->
+<button (click)="userServie.supprimeDoc(authService.user.uid)">Supprimer mon compte</button>

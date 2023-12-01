@@ -1,0 +1,42 @@
+<section>
+  <header>
+    <h2>Evenements</h2>
+  </header>
+  <fieldset>
+    <input type="text" [(ngModel)]="filtre"  placeholder="Filtre">
+    <button (click)="ajouter()">Ajouter un evenement</button>
+  </fieldset>
+  <table *ngIf="eventsSevice.listeEvenements.length > 0">
+    <thead>
+        <th>Titre</th>
+        <th>Affiche</th>
+        <th>Nb. places</th>
+        <th>Début</th>
+        <th>Fin</th>
+        <th>Date</th>
+        <th>Infos</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of eventsSevice.listeEvenements | events:filtre">
+        <td><a [routerLink]="['/evenement',event.id]">{{ event.titre | uppercase }}</a></td>
+        <td>
+          <img [src]="event.media.src" [alt]="event.media.alt" *ngIf="event.media && event.media.src != ''">
+        </td>
+        <td>{{ event.places }}</td>
+        <td>{{ event.horaires.debut }}</td>
+        <td>{{ event.horaires.fin }}</td>
+        <td>{{ event.date | date:'MMM d, y' }}</td>
+        <td *ngIf="event.infos">{{ event.infos }}</td><td *ngIf="!event.infos"> </td>
+        <td>
+          <button (click)="deleteEvent(event.id)" *ngIf="event.id">
+            <i class="fas fa-solid fa-trash"></i> Supprimer
+          </button>
+          <button (click)="editEvent(event.id)" *ngIf="event.id">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

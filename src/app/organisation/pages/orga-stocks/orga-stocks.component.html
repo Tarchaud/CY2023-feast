@@ -1,0 +1,30 @@
+<section>
+  <header>
+    <h2>Le stock</h2>
+  </header>
+  <fieldset>
+    <input type="text" [(ngModel)]="filtre"  placeholder="Filtre">
+    <button [routerLink]="['/organisation/stocks/add']" >Ajouter du stock</button>
+  </fieldset>
+  <table *ngIf="stocksService.listeStocks.length > 0">
+    <thead>
+        <th>Nom</th>
+        <th>Quantité</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stock of stocksService.listeStocks | stocks:filtre">
+        <td>{{ stock.nom | uppercase }}</td>
+        <td>{{ stock.quantite }}</td>
+        <td>
+          <button (click)="deleteStock(stock.id)" *ngIf="stock.id">
+            <i class="fas fa-solid fa-trash"></i> Supprimer
+          </button>
+          <button (click)="editStock(stock.id)" *ngIf="stock.id">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

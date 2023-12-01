@@ -1,0 +1,36 @@
+<section>
+  <form (submit)="auth.fireNewUser()" *ngIf="!auth.isLoggedIn">
+    <h1>Inscription</h1>
+    <fieldset>
+      <label>Email*</label>
+      <input [(ngModel)]="auth.authID.id"  name="email" required>
+    </fieldset>
+
+    <fieldset>
+      <label>Mot de passe*</label>
+      <input [(ngModel)]="auth.authID.mdp" type="password" name="mdp" required>
+    </fieldset>
+
+    <button type="submit" [disabled]="">S'inscrire</button>
+  </form>
+  <form (submit)="user.gereDoc(ctlf.value)" *ngIf="auth.isLoggedIn" #ctlf="ngForm">
+    <!-- mettre tout ce qu'il faut pour le profil -->
+    <h1>Compléter mon profil</h1>
+    <fieldset>
+      <label>Nom</label>
+      <input name="nom"  required [ngModel]="auth.profil.nom ? auth.profil.nom : ''">
+    </fieldset>
+
+    <fieldset>
+      <label>Prénom</label>
+      <input name="prenom" required [ngModel]="auth.profil.prenom ? auth.profil.prenom : ''">
+    </fieldset>
+
+    <input hidden name="statut" [ngModel]="auth.profil!.statut ? auth.profil.statut : 'user' ">
+    <input hidden name="email" [ngModel]="auth.user.email">
+
+    <button type="submit" [disabled]="!ctlf.valid">Compléter</button>
+  </form>
+
+  <a routerLink="/connexion" *ngIf="!auth.isLoggedIn">Se connecter</a>
+</section>

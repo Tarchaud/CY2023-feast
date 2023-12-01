@@ -1,0 +1,14 @@
+<!-- <h1>Titre App</h1> -->
+<nav>
+  <ul>
+    <li routerLink="/">Accueil</li>
+    <li routerLink="/evenements">Evènements</li>
+    <li routerLink="/utilisateurs">utilisateurs</li>
+    <li routerLink="/inscription" *ngIf="!auth.isLoggedIn">M'inscrire</li>
+    <li routerLink="/inscription" *ngIf="auth.isLoggedIn">Compléter profil</li>
+    <li routerLink="/profil" *ngIf="auth.isLoggedIn">Profil</li>
+    <li routerLink="/connexion" *ngIf="!auth.isLoggedIn">Se connecter</li>
+    <li routerLink="/" (click)="auth.logOut()" *ngIf="auth.isLoggedIn">Se déconnecter</li>
+    <!-- <li routerLink="/organisation">Accès privé (organistaion)</li> -->
+  </ul>
+</nav>

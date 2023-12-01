@@ -1,0 +1,15 @@
+/* Styles pour l'élément <aside> */
+aside {
+  width: 20vw; /* Largeur de la barre latérale (à ajuster selon vos besoins) */
+  float: left; /* Pour placer l'élément à gauche */
+  padding: 20px; /* Espace intérieur de la barre latérale */
+  box-sizing: border-box; /* Inclure le padding dans la largeur spécifiée */
+}
+
+/* Styles pour le contenu de l'élément <section> */
+section {
+  width: 80vw; /* Largeur de la section principale (à ajuster selon vos besoins) */
+  float: left; /* Pour occuper l'espace restant à droite de la barre latérale */
+  padding: 20px; /* Espace intérieur de la section principale */
+  box-sizing: border-box; /* Inclure le padding dans la largeur spécifiée */
+}
