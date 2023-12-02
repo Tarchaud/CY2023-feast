@@ -5,16 +5,20 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { GestionProfilsComponent } from './pages/gestion-profils/gestion-profils.component';
 import { ParametresComponent } from './pages/parametres/parametres.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminEditUserComponent } from './pages/admin-edit-user/admin-edit-user.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
     GestionProfilsComponent,
     ParametresComponent,
-    AdminComponent
+    AdminComponent,
+    AdminEditUserComponent
   ],
   imports: [
     CommonModule,
+    SharedModule,
     AdminRoutingModule
   ]
 })

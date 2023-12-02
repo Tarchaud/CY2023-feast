@@ -13,17 +13,24 @@
 
     <button type="submit" [disabled]="">S'inscrire</button>
   </form>
-  <form (submit)="user.gereDoc(ctlf.value)" *ngIf="auth.isLoggedIn" #ctlf="ngForm">
+  <a routerLink="/connexion" *ngIf="!auth.isLoggedIn">Se connecter</a>
+
+  <form (submit)="completeProfil(ctlf)" *ngIf="auth.isLoggedIn" #ctlf="ngForm">
     <!-- mettre tout ce qu'il faut pour le profil -->
     <h1>Compléter mon profil</h1>
     <fieldset>
-      <label>Nom</label>
+      <label>Nom*</label>
       <input name="nom"  required [ngModel]="auth.profil.nom ? auth.profil.nom : ''">
     </fieldset>
 
     <fieldset>
-      <label>Prénom</label>
+      <label>Prénom*</label>
       <input name="prenom" required [ngModel]="auth.profil.prenom ? auth.profil.prenom : ''">
+    </fieldset>
+
+    <fieldset>
+      <label>Photo de profil</label>
+      <input name="src" [ngModel]="auth.profil.media?.src ? auth.profil.media?.src : ''">
     </fieldset>
 
     <input hidden name="statut" [ngModel]="auth.profil!.statut ? auth.profil.statut : 'user' ">
@@ -32,5 +39,4 @@
     <button type="submit" [disabled]="!ctlf.valid">Compléter</button>
   </form>
 
-  <a routerLink="/connexion" *ngIf="!auth.isLoggedIn">Se connecter</a>
 </section>

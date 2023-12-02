@@ -8,10 +8,11 @@
       <p>Date : {{event.date | date:'M/d/yy'	}}</p>
       <p>Début : {{event.horaires.debut}}</p>
       <p>Fin : {{event.horaires.fin}}</p>
+      <button (click)="inscription()" *ngIf="!isInscrit && auth.isLoggedIn && event.places > countInscrits">Réserver ma place</button>
+      <p *ngIf="isInscrit && auth.isLoggedIn">Déjà Inscrit :
+        <button (click)="desincrire()">Se désincrire</button>
+      </p>
     </div>
     <img [src]="event.media.src" [alt]="event.media.alt" *ngIf="event.media && event.media.src != ''">
   </aside>
-  <button (click)="inscription()" *ngIf="!isInscrit && auth.isLoggedIn && event.places > countInscrits">Réserver ma place</button>
-  <button disabled *ngIf="isInscrit && auth.isLoggedIn">Déjà Inscrit</button>
-  <button (click)="desincrire()" *ngIf="isInscrit && auth.isLoggedIn">Se désincrire</button>
 </section>

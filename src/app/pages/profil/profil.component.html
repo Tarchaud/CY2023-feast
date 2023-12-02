@@ -1,9 +1,10 @@
-<h1>Salut {{user.nom | uppercase}} {{user.prenom}}</h1>
-<p>Email : {{user.email}}</p>
+<section *ngIf="!isLoading">
+  <h1>Salut {{authService.profil.nom| uppercase}} {{authService.profil.prenom}}</h1>
+  <img [src]="authService.profil.media.src" [alt]="authService.profil.media.alt" *ngIf="authService.profil.media && authService.profil.media.src != ''">
 
-<img [src]="user.media?.src" [alt]="user.media?.alt" >
 
+  <p>Email : {{authService.profil.email}}</p>
 
-<!-- <button (click)="auth.logout()">Se déconnecter</button> -->
-<!-- <button (click)="auth.deleteUser()">Supprimer mon compte</button> -->
-<button (click)="userServie.supprimeDoc(authService.user.uid)">Supprimer mon compte</button>
+  <button (click)="authService.logOut()">Se déconnecter</button>
+  <button (click)="userServie.supprimeDoc(authService.user.uid)">Supprimer mon compte</button>
+</section>

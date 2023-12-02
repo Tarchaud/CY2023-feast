@@ -13,22 +13,11 @@ export class UsersService {
 
   constructor(private store:Firestore, private auth:AuthService) { }
 
-
-  /**
-   * Permet de créer un user
-   */
-  creerProfil(){
-    // const monDoc = doc(this.store, 'users', 'monId');
-    addDoc(collection(this.store, 'users'), {
-
-    })
-  }
-
   /**
    * Permet de créer ou mettre à jour un user
    * @param profil
    */
-  gereDoc(profil: NgForm){
+  gereDoc(profil: any){
     console.log("profil : ",profil);
     const monDoc = doc(this.store, 'users', this.auth.user.uid);
     setDoc(monDoc, profil, {merge:true})
@@ -63,8 +52,9 @@ export class UsersService {
       (docs) => {
         docs.forEach(
           (doc) => {
-            console.log(doc.id, " => ", doc.data()); //TODO : clear
-            this.usersList.push(doc.data() as UsersI);
+            let user = doc.data() as UsersI;
+            user.id = doc.id;
+            this.usersList.push(user);
           }
         );
       }
@@ -72,6 +62,5 @@ export class UsersService {
       (er) => console.log(er)
     );
   }
-
 
 }

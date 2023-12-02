@@ -9,15 +9,14 @@ import { UsersService } from 'src/app/shared/services/users.service';
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit {
-  user !: UsersI;
+  isLoading : boolean = true;
 
   constructor(public authService: AuthService, public userServie: UsersService) { }
 
   ngOnInit(): void {
-    if (!this.authService.profil) {
-      this.authService.getProfil();
-    }
-    this.user = this.authService.profil;
+    console.log('profil : ', this.authService.profil);
+    this.authService.getProfil();
+    this.isLoading = false;
   }
 
 

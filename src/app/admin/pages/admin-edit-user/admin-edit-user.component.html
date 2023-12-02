@@ -1,0 +1,35 @@
+<section>
+  <form (submit)="editProfil(ctlf)" #ctlf="ngForm">
+    <h1>Modifiler le profil de l'utilisateur {{user.nom | uppercase}} {{user.prenom}}</h1>
+    <fieldset>
+      <label>Nom*</label>
+      <input name="nom"  required [ngModel]="user.nom ? user.nom : ''">
+    </fieldset>
+
+    <fieldset>
+      <label>Prénom*</label>
+      <input name="prenom" required [ngModel]="user.prenom ? user.prenom : ''">
+    </fieldset>
+
+    <fieldset>
+      <label>Photo de profil</label>
+      <input name="src" [ngModel]="user.media?.src ? user.media?.src : ''">
+    </fieldset>
+
+    <fieldset>
+      <label>Statut</label>
+      <select name="statut" required [ngModel]="user.statut ? user.statut : 'user' ">
+        <option value="user">user</option>
+        <option value="organisateur">organisateur</option>
+        <option value="admin">admin</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <label>Email</label>
+      <input name="email" required [ngModel]="user.email">
+    </fieldset>
+
+    <button type="submit" [disabled]="!ctlf.valid">Modifier l'utilisateur </button>
+  </form>
+</section>

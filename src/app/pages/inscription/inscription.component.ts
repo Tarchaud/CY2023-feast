@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 
@@ -8,21 +10,21 @@ import { UsersService } from 'src/app/shared/services/users.service';
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent {
-  //clear
-  nom : string = '';
-  prenom : string = '';
-  id : string = '';
-  email : string = '';
-  statut : string = '';
-  infos : string = '' ;
-  mdp : string = '';
-  //clear
 
 
-  constructor(public auth:AuthService, public user:UsersService) { }
+  constructor(public auth:AuthService, public user:UsersService, private route : Router) { }
 
-  singup() {//clear
-    this.auth.fireNewUser();
+  completeProfil(value :NgForm) {
+    let user = {
+      nom: value.value.nom,
+      prenom: value.value.prenom,
+      email: value.value.email,
+      statut: value.value.statut,
+      media: {
+        src: value.value.src,
+      },
+    }
+    this.user.gereDoc(user);
+    this.route.navigate(['/profil']);
   }
-
 }
