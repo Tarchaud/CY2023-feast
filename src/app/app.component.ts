@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NetworkService } from './shared/services/network.service';
+import { Observable, fromEvent, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-racine',
@@ -6,15 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // title = 'CY2023-feast';
-  // soustitre:string = "L'application de gestion de vos soirées";
-  // moustache:string = 'Affiche moi des moustache steuplé {{ !';
-  // listeMoustaches:Array<string> = ['Moustache', 'Favoris'];
-  // autreListeMoustaches:string[] = [];
 
-  constructor(){};
 
-  peupleMoustaches(){
-    console.log('Peuple moustache appelé');
-  }
+  constructor(private network : NetworkService) {  };
+
 }

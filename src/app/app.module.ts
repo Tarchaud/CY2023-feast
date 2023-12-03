@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //Modules
 import { SharedModule } from './shared/shared.module';
-
-//Pipes
-import { EventsPipe } from './shared/pipes/events.pipe';
 
 //Components
 import { AppComponent } from './app.component';
@@ -27,12 +25,13 @@ import { EvenementComponent } from './pages/evenement/evenement.component';
 //Interceptors
 import { TokenInterceptor } from './shared/securite/token.interceptor';
 import { Auth401Interceptor } from './shared/securite/auth401.interceptor';
+
+//Firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-
 
 @NgModule({
   declarations: [
