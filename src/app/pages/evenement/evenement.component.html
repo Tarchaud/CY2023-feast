@@ -12,6 +12,9 @@
       <p *ngIf="isInscrit && auth.isLoggedIn">Déjà Inscrit :
         <button (click)="desincrire()">Se désincrire</button>
       </p>
+      <p *ngIf="!auth.isLoggedIn">
+        il faut être connecté pour s'inscrire à un évênement
+      </p>
     </div>
     <img [src]="event.media.src" [alt]="event.media.alt" *ngIf="event.media && event.media.src != ''">
   </aside>
