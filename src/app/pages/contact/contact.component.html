@@ -1,7 +1,7 @@
 <section>
   <h1>Besion d'infos ? Pas assez de RedBull ?</h1>
   <h2>Laissez-moi un message</h2>
-  <form (submit)="coucouToi()">
+  <form (submit)="saveContact()">
     <fieldset>
       <label >Nom</label>
       <input name="nom" [(ngModel)]="contact.nom" #ctlNom="ngModel" required minlength="8">
