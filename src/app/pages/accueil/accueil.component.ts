@@ -7,6 +7,6 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./accueil.component.css'],
 })
 export class AccueilComponent {
-  title = 'CY-Party';
-  soustitre:string = "L'application de gestion de vos soirées";
+  title = 'CY-Events';
+  soustitre:string = "L'application qui regroupe tous les événements de ton école !";
 }

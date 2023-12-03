@@ -1,3 +1,21 @@
+# TP de Cloud Front - CHAUTARD Corentin
+
+### Identifiant de différent compte selon le statut
+
+- Admin :
+  - email : `jean.admin@admin.fr`
+  - password : `jeanAdmin`
+- Organisateur :
+  - email : `paul.orga@orga.fr`
+  - password : `poleOrga`
+- User :
+  - email : `jack.user@user.fr`
+  - password : `jackUser`
+
+
+
+
+___
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/LRm4bhIP)
 # CYTech 2023 Cloud Front feast - Gestionnaire d'événements
 
