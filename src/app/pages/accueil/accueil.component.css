@@ -1,9 +1,24 @@
-header {
-    background-color: white;
-    height: var(--menu);
-    color: black;
-    display: flex;
-    justify-content: space-between;
-    display: flex;
-    flex-flow: row nowrap;
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+h1 {
+  font-size: 3em;
+  color: #333;
+}
+
+ h2 {
+  font-size: 2em;
+  color: #555;
+  margin-top: 10px;
+}
+
+p {
+  font-size: 1.2em;
+  color: #666;
+  line-height: 1.5;
 }
