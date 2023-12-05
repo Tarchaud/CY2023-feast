@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { UsersI } from '../models/users-i';
 import { Router } from '@angular/router';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, User, deleteUser } from '@angular/fire/auth';
-import { Firestore, collection, doc, getDoc, getDocs } from '@angular/fire/firestore';
+import { Firestore, collection, doc, getDoc, getDocs, setDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +43,7 @@ export class AuthService {
         this.user = infos.user;
         this.isLoggedIn = true;
         console.log('user : ', this.user);
-        this.profil = { nom : '', prenom : '', email : this.authID.id, statut : 'user' };
+        // this.profil = { nom : '', prenom : '', email : this.authID.id, statut : 'user' };
         this.getProfil();
         this.router.navigateByUrl('/');
       }
@@ -62,6 +62,13 @@ export class AuthService {
         this.user = infos.user;
         this.isLoggedIn = true;
         this.profil = { nom : '', prenom : '', email : this.authID.id, statut : 'user' };
+        const monDoc = doc(this.store, 'users', this.user.uid);
+        setDoc(monDoc, this.profil, {merge:true})
+        .then(
+          () => console.log('ok')
+        ).catch(
+          er => console.log(er)
+        );
         //Go form compléter profile
         this.router.navigateByUrl('/inscription');
       }
@@ -79,6 +86,8 @@ export class AuthService {
         if (doc.exists()) {
           this.profil = doc.data() as UsersI;
           console.log(this.profil);
+        }else {
+          this.deleteUser();
         }
       }
     ).catch(
@@ -89,6 +98,7 @@ export class AuthService {
   deleteUser(){
     this.user.delete().then(
       () => {
+        this.isLoggedIn = false;
         console.log('user supprimé');
         this.authID = { id : '', mdp : '' };
         this.router.navigateByUrl('/connexion');
