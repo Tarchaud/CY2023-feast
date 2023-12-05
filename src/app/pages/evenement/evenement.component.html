@@ -1,7 +1,7 @@
 <section *ngIf="!loader">
-  <h2>Détails de l'évênement</h2>
   <aside>
     <div>
+      <h2>Détails de l'événement</h2>
       <h2>{{ event.titre }}</h2>
       <blockquote>{{ event.infos }}</blockquote>
       <p>Places : {{event.places}}</p>
@@ -13,9 +13,10 @@
         <button (click)="desincrire()">Se désincrire</button>
       </p>
       <p *ngIf="!auth.isLoggedIn">
-        il faut être connecté pour s'inscrire à un évênement
+        il faut être connecté pour s'inscrire à un évênement et pour pouvoir discuter avec les autres dans le chat de l'événement
       </p>
     </div>
     <img [src]="event.media.src" [alt]="event.media.alt" *ngIf="event.media && event.media.src != ''">
   </aside>
+  <app-real-time-chat [eventId]="param" *ngIf="auth.isLoggedIn"></app-real-time-chat>
 </section>

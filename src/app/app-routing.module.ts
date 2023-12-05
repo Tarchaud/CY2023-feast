@@ -11,10 +11,12 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ErreurComponent } from './pages/erreur/erreur.component';
 import { EvenementComponent } from './pages/evenement/evenement.component';
 import { authGuard } from './shared/securite/auth.guard';
+import { RealTimeChatComponent } from './template/real-time-chat/real-time-chat.component';
 
 const routes: Routes = [
   { path : '', component : AccueilComponent },
   { path : 'profil', component : ProfilComponent },
+  { path : 'chat', component : RealTimeChatComponent },
   { path : 'utilisateurs', component : UsersComponent },
   { path : 'evenements' , component : EvenementsComponent },
   { path : 'evenement/:event' , component : EvenementComponent },

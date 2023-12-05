@@ -32,6 +32,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { RealTimeChatComponent } from './template/real-time-chat/real-time-chat.component';
 
 @NgModule({
   declarations: [
@@ -47,17 +48,18 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     RGPDComponent,
     ContactComponent,
     ErreurComponent,
-    EvenementComponent
+    EvenementComponent,
+    RealTimeChatComponent
   ],
   imports: [
     SharedModule,
     BrowserModule,
     AppRoutingModule,
+    provideFirebaseApp(() => initializeApp({"projectId":"cytech-cloud","appId":"1:799194493579:web:e34cfb7a438491bb115a8e","storageBucket":"cytech-cloud.appspot.com","apiKey":"AIzaSyBguW13bpJLs2UvZanWyHlBBXCTRzcjzSA","authDomain":"cytech-cloud.firebaseapp.com","databaseURL":"https://cytech-cloud-default-rtdb.europe-west1.firebasedatabase.app/","messagingSenderId":"799194493579"})),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideDatabase(() => getDatabase()),
     provideStorage(() => getStorage()),
-    provideFirebaseApp(() => initializeApp({"projectId":"cytech-cloud","appId":"1:799194493579:web:e34cfb7a438491bb115a8e","storageBucket":"cytech-cloud.appspot.com","apiKey":"AIzaSyBguW13bpJLs2UvZanWyHlBBXCTRzcjzSA","authDomain":"cytech-cloud.firebaseapp.com","messagingSenderId":"799194493579"})),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi: true},

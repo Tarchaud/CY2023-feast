@@ -1,0 +1,16 @@
+<section>
+  <div class="chat">
+    <h2>Chat de l'événement</h2>
+    <div class="chat-box" #chatBox>
+      <div *ngFor="let message of listMessages | async" >
+        <p *ngIf="this.auth.user.uid != message.uid"><strong>{{ message.name }}:</strong> {{ message.message }}</p>
+        <p *ngIf="this.auth.user.uid == message.uid"><strong>Moi :</strong> {{ message.message }}</p>
+        <small>{{ message.date | date:'M/d/yy, h:mm a'}}</small>
+      </div>
+    </div>
+  </div>
+    <form (ngSubmit)="sendMessage()">
+      <input type="text" name="fieldName" [(ngModel)]="newMessage" required/>
+      <button type="submit">Envoyer</button>
+    </form>
+</section>
