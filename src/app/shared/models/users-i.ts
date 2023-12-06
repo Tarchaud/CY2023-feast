@@ -38,14 +38,6 @@ export interface MediaI{
 }
 
 
-export interface FireUserI {
-  metadata : MetadataI;
-  // accessToken : string;
-  email : string;
-  phoneNumber ?: string;
-  photoURL ?: string;
-  uid: string;
-}
 
 export interface MetadataI {
   createdAt : string;

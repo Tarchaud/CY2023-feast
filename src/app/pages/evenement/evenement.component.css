@@ -43,3 +43,10 @@ img {
   border-radius: 6px;
   margin-top: 15px;
 }
+
+.tabParticipant {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}

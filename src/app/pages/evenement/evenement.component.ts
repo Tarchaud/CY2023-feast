@@ -16,6 +16,7 @@ export class EvenementComponent  implements OnInit{
   loader : boolean = true;
   countInscrits !: number;
   isInscrit : boolean = false;
+  participantsList : Array<any> = [];
 
   constructor(public activeRoute : ActivatedRoute, public evenements : EvenementsService, public auth : AuthService, public participants : ParticipantsService) {
     this.param = this.activeRoute.snapshot.paramMap.get('event') || '';
@@ -26,6 +27,7 @@ export class EvenementComponent  implements OnInit{
         this.loader = false;
         console.log('event : ', this.event);
         this.getCountIncrits();
+        this.getInscrits();
         if(this.auth.isLoggedIn){
           this.participants.getParticipation(this.param, this.auth.user.uid).then(
             (participation) => {
@@ -56,7 +58,7 @@ export class EvenementComponent  implements OnInit{
 
       this.participants.inscription(participant);
       console.log('après incristpion');
-
+      this.getInscrits();
       this.getCountIncrits();
       this.isInscrit = true;
 
@@ -70,6 +72,18 @@ export class EvenementComponent  implements OnInit{
       () => {
         this.isInscrit = false;
         this.getCountIncrits();
+        this.getInscrits();
+      }
+    ).catch(
+      (er) => console.log(er)
+    );
+  }
+
+  getInscrits(){
+    this.participants.getParticipants(this.param).then(
+      (participants) => {
+        this.participantsList = participants;
+        console.log('participants : ', this.participantsList);
       }
     ).catch(
       (er) => console.log(er)

@@ -19,4 +19,23 @@
     <img [src]="event.media.src" [alt]="event.media.alt" *ngIf="event.media && event.media.src != ''">
   </aside>
   <app-real-time-chat [eventId]="param" *ngIf="auth.isLoggedIn"></app-real-time-chat>
+  <section class="tabParticipant">
+    <!-- tableau des participant -->
+    <h2>Liste des participants</h2>
+    <table *ngIf="participantsList.length > 0">
+      <thead>
+        <th>Nom</th>
+        <th>Prénom</th>
+      </thead>
+
+      <tbody>
+        <ng-container *ngFor="let p of participantsList">
+          <tr>
+            <td>{{ p.nom | uppercase }}</td>
+            <td>{{ p.prenom }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </section>
 </section>
