@@ -51,6 +51,9 @@ export class EvenementComponent  implements OnInit{
   ngOnInit(){
   }
 
+  /**
+   * Permet de s'inscrire à un évènement
+   */
   inscription(){
     const participant = { idUser : this.auth.user.uid ,nom : this.auth.profil.nom, prenom : this.auth.profil.prenom, event : this.param};
     try {
@@ -67,6 +70,9 @@ export class EvenementComponent  implements OnInit{
     }
   }
 
+  /**
+   * Permet de se désinscrire d'un évènement
+   */
   desincrire(){
     this.participants.deleteParticipation(this.param, this.auth.user.uid).then(
       () => {
@@ -79,6 +85,9 @@ export class EvenementComponent  implements OnInit{
     );
   }
 
+  /**
+   * Permet de récupérer la liste des inscrits à un évènement
+   */
   getInscrits(){
     this.participants.getParticipants(this.param).then(
       (participants) => {
@@ -90,6 +99,9 @@ export class EvenementComponent  implements OnInit{
     );
   }
 
+  /**
+   * Permet de récupérer le nombre d'inscrits à un évènement
+   */
   getCountIncrits(){
     this.participants.getCountInscrits(this.param).then(
       (count) => {

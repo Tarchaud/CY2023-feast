@@ -62,7 +62,7 @@ export class EvenementsService {
   }
 
   /**
-   *
+   * Permet de créer un evenement
    * @param ev
    */
   addEvent(ev:any){

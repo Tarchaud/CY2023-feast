@@ -19,6 +19,9 @@ export class NetworkService {
 
     });
 
+    /**
+     * Permet de se déconnecter si on perd la connexion
+     */
     fromEvent(window, 'offline').subscribe(e => {
       this.online = false;
       console.log('online', this.online);

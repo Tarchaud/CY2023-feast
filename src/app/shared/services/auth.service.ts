@@ -36,6 +36,9 @@ export class AuthService {
     })
   }
 
+  /**
+   * Permet de se connecter avec firebase
+   */
   fireAuth(){
     signInWithEmailAndPassword(this.fire, this.authID.id, this.authID.mdp)
     .then(
@@ -55,6 +58,9 @@ export class AuthService {
     );
   }
 
+  /**
+   * Permet de créer un user et son authentification firebase
+   */
   fireNewUser(){
     createUserWithEmailAndPassword(this.fire,this.authID.id, this.authID.mdp)
     .then(
@@ -80,6 +86,9 @@ export class AuthService {
     );
   }
 
+  /**
+   * Permet de récuperer le profil de l'utilisateur connecter
+   */
   getProfil(){
     getDoc(doc(this.store,'users',this.user.uid)).then(
       (doc) => {
@@ -95,6 +104,9 @@ export class AuthService {
     )
   }
 
+  /**
+   * Permet de supprimer un user et son authentification firebase de la personne connecter
+   */
   deleteUser(){
     this.user.delete().then(
       () => {
@@ -108,6 +120,9 @@ export class AuthService {
     );
   }
 
+  /**
+   * Permet de se déconnecter
+   */
   logOut(){
     signOut(this.fire).then(
       () => {

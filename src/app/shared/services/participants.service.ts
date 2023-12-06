@@ -11,6 +11,10 @@ export class ParticipantsService {
   constructor(private store:Firestore) { }
 
 
+  /**
+   * Permet de s'inscrire à un événement
+   * @param participant
+   */
   inscription(participant:ParticipantI){
     addDoc(collection(this.store,'participations'), participant).then(
       () => console.log('ok')
@@ -19,6 +23,11 @@ export class ParticipantsService {
     );
   }
 
+  /**
+   * Permet d'avoir le nombre de personne inscrite à un événement
+   * @param idEvent
+   * @returns
+   */
   async getCountInscrits(idEvent: string) : Promise<number> {
     try {
       const q = query(collection(this.store, 'participations'), where('event', '==', idEvent));
@@ -32,6 +41,11 @@ export class ParticipantsService {
     }
   }
 
+  /**
+   * Permet d'avoir la liste des participants à un événement
+   * @param idEvent
+   * @returns
+   */
   async getParticipants(idEvent: string) : Promise<Array<ParticipantI>> {
     try {
       const q = query(collection(this.store, 'participations'), where('event', '==', idEvent));
@@ -45,6 +59,12 @@ export class ParticipantsService {
     }
   }
 
+  /**
+   * Permet de récupérer une participation
+   * @param idEvent
+   * @param idUser
+   * @returns
+   */
   async getParticipation(idEvent: string, idUser: string): Promise<ParticipantI | null> {
     try {
       const q = query(collection(this.store, 'participations'), where('event', '==', idEvent),where('idUser', '==', idUser));
@@ -64,6 +84,12 @@ export class ParticipantsService {
     }
   }
 
+  /**
+   * Permet de supprimer une participation
+   * @param idEvent
+   * @param idUser
+   * @returns
+   */
   async deleteParticipation(idEvent: string, idUser: string): Promise<void> {
     try {
       const q = query(collection(this.store, 'participations'),
