@@ -43,6 +43,13 @@ export class RealTimeChatComponent {
     }
   }
 
+  onKeyPress(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      this.sendMessage();
+    }
+  }
+
   scrollToBottom(): void {
     try {
       this.chatBox.nativeElement.scrollTop = this.chatBox.nativeElement.scrollHeight;

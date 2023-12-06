@@ -37,6 +37,22 @@ p {
   margin: 5px 0;
 }
 
+.other-user p {
+  text-align: left;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-bottom: 5px;
+}
+
+.current-user p {
+  text-align: right;
+  background-color: #d3d3d3;
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-bottom: 5px;
+}
+
 small {
   color: #888;
 }
