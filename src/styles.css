@@ -174,3 +174,9 @@ fieldset {
     transform: rotate(1turn);
   }
 }
+
+
+img {
+  width: 320px;
+  height: 180px;
+}
