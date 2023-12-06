@@ -8,10 +8,11 @@
 
     <fieldset>
       <label>Mot de passe*</label>
-      <input [(ngModel)]="auth.authID.mdp" type="password" name="mdp" required>
+      <input [(ngModel)]="auth.authID.mdp" type="password" name="mdp" required #pwd>
+      <p *ngIf="pwd.value.length < 8">il faut 8 caractères minimum</p>
     </fieldset>
 
-    <button type="submit" [disabled]="">S'inscrire</button>
+    <button type="submit" [disabled]="pwd.value.length < 8">S'inscrire</button>
   </form>
   <a routerLink="/connexion" *ngIf="!auth.isLoggedIn">Se connecter</a>
 
