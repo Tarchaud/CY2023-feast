@@ -3,6 +3,7 @@ import { EvenementI } from '../models/evenement-i';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Firestore, collection, doc, getDoc, getDocs, addDoc, deleteDoc, setDoc } from '@angular/fire/firestore';
+import { Notify } from 'notiflix';
 
 @Injectable({
   providedIn: 'root'
@@ -67,7 +68,10 @@ export class EvenementsService {
    */
   addEvent(ev:any){
     addDoc(collection(this.store,'events'), ev).then(
-      () => console.log('ok')
+      () => {
+        console.log('ok');
+        Notify.success('Evénement bien créé !');
+      }
     ).catch(
       er => console.log(er)
     );
@@ -79,7 +83,10 @@ export class EvenementsService {
    */
   deleteEvent(id:string){
     deleteDoc(doc(this.store,'events',id)).then(
-      () => console.log('ok')
+      () => {
+        console.log('ok');
+        Notify.success('Evénement bien supprimé !');
+      }
     ).catch(
       er => console.log(er)
     );
@@ -94,7 +101,10 @@ export class EvenementsService {
     const eventDoc = doc(this.store,'events',id);
     setDoc(eventDoc, ev, {merge:true})
     .then(
-      () => console.log('ok')
+      () => {
+        console.log('ok');
+        Notify.success('Evénement mis à jour !');
+      }
     ).catch(
       er => console.log(er)
     );

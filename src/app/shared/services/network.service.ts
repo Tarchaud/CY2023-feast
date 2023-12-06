@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { AuthService } from './auth.service';
+import { Notify } from 'notiflix';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,7 @@ export class NetworkService {
      */
     fromEvent(window, 'offline').subscribe(e => {
       this.online = false;
+      Notify.warning("Vériifer votre connexion internet !!!");
       console.log('online', this.online);
       if (this.auth.isLoggedIn) {
         this.auth.logOut();

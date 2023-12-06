@@ -5,7 +5,7 @@
       <h2>{{ event.titre }}</h2>
       <blockquote>{{ event.infos }}</blockquote>
       <p>Places : {{event.places}}</p>
-      <p>Date : {{event.date | date:'M/d/yy'	}}</p>
+      <p>Date : {{event.date | date:'MMM d, y' 	}}</p>
       <p>Début : {{event.horaires.debut}}</p>
       <p>Fin : {{event.horaires.fin}}</p>
       <button (click)="inscription()" *ngIf="!isInscrit && auth.isLoggedIn && event.places > countInscrits">Réserver ma place</button>

@@ -1,6 +1,6 @@
 <section>
   <h2>Liste des utilisateurs</h2>
-  <table *ngIf="adminService.usersList.length > 0">
+  <table *ngIf="usersSerivce.usersList.length > 0">
     <thead>
       <th>Nom</th>
       <th>Prénom</th>
@@ -10,7 +10,7 @@
     </thead>
 
     <tbody>
-      <ng-container *ngFor="let u of adminService.usersList">
+      <ng-container *ngFor="let u of usersSerivce.usersList">
         <tr *ngIf="u.id !== auth.user.uid">
           <td>{{ u.nom | uppercase }}</td>
           <td>{{ u.prenom }}</td>

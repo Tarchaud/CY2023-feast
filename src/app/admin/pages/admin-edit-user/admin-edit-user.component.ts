@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersI } from 'src/app/shared/models/users-i';
 import { AdminService } from '../../shared/services/admin.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-admin-edit-user',
@@ -13,9 +14,9 @@ export class AdminEditUserComponent {
   user !: UsersI;
   idUser !: string;
 
-  constructor(private activeRoute : ActivatedRoute, private adminService : AdminService, private route : Router ) {
+  constructor(private activeRoute : ActivatedRoute, private adminService : AdminService, private route : Router, private userService : UsersService ) {
     this.idUser = this.activeRoute.snapshot.paramMap.get('idUser') || '';
-    this.adminService.getProfilById(this.idUser).then(
+    this.userService.getProfilById(this.idUser).then(
       (user) => {
         this.user = user.data() as UsersI;
         console.log('user : ', this.user);
@@ -33,7 +34,7 @@ export class AdminEditUserComponent {
       statut : form.value.statut
     };
 
-    this.adminService.editProfilById(this.idUser,profil);
+    this.userService.editProfilById(this.idUser,profil);
     this.route.navigateByUrl('/admin');
 
   }

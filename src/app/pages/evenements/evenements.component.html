@@ -23,7 +23,7 @@
         <td>{{ event.places }}</td>
         <td>{{ event.horaires.debut }}</td>
         <td>{{ event.horaires.fin }}</td>
-        <td>{{ event.date | date:'M/d/yy' }}</td>
+        <td>{{ event.date | date:'MMM d, y'  }}</td>
         <td *ngIf="event.infos">{{ event.infos }}</td><td *ngIf="!event.infos"> </td>
       </tr>
     </tbody>

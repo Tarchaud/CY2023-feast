@@ -12,10 +12,10 @@ import { AdminService } from '../../shared/services/admin.service';
 export class GestionProfilsComponent implements OnInit {
 
   constructor(private route : Router,
-  public adminService : AdminService, public auth : AuthService) { }
+  public adminService : AdminService, public auth : AuthService, public usersSerivce : UsersService) { }
 
   ngOnInit(): void {
-    this.adminService.getAllUsers();
+    this.usersSerivce.getAllUsers();
   }
 
 
@@ -26,8 +26,8 @@ export class GestionProfilsComponent implements OnInit {
 
   deleteUser(user : string){
     console.log(user);
-    this.adminService.supprimeUser(user);
-    this.adminService.getAllUsers();
+    this.usersSerivce.supprimeUser(user);
+    this.usersSerivce.getAllUsers();
   }
 
 }

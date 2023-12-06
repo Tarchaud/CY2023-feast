@@ -4,6 +4,7 @@ import { Firestore, addDoc, collection, doc, setDoc, getDoc, deleteDoc, getDocs 
 import { AuthService } from './auth.service';
 import { UsersI } from '../models/users-i';
 import { NgForm } from '@angular/forms';
+import { Notify } from 'notiflix';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,10 @@ export class UsersService {
     const monDoc = doc(this.store, 'users', this.auth.user.uid);
     setDoc(monDoc, profil, {merge:true})
     .then(
-      () => console.log('ok')
+      () => {
+        console.log('ok');
+        Notify.success('Profil mis à jour !');
+      }
     ).catch(
       er => console.log(er)
     );
@@ -36,6 +40,7 @@ export class UsersService {
     deleteDoc(doc(this.store, 'users', id)).then(
       () => {
         console.log('supprimé');
+        Notify.success('Compte Supprimé !');
         this.auth.deleteUser();
       }
     ).catch(
@@ -60,6 +65,49 @@ export class UsersService {
       }
     ).catch(
       (er) => console.log(er)
+    );
+  }
+
+  /**
+   * Permet de récuperer un user par son id
+   * @param id
+   * @returns
+   */
+  getProfilById(id:string): Promise<any>{
+    return getDoc(doc(this.store, 'users', id));
+  }
+
+  /**
+   * Permet de mettre à jour un user
+   * @param id
+   * @param profil
+   */
+  editProfilById(id:string, profil:any){
+    console.log("profil : ",profil);
+    const monDoc = doc(this.store, 'users', id);
+    setDoc(monDoc, profil, {merge:true})
+    .then(
+      () => {
+        console.log('ok');
+        Notify.success('User bien mis à jour !');
+      }
+    ).catch(
+      er => console.log(er)
+    );
+  }
+
+  /**
+   * Permet de supprimer un user
+   * @param id
+   */
+  supprimeUser(id:string){
+    deleteDoc(doc(this.store, 'users', id)).then(
+      () => {
+        console.log('ok');
+        Notify.success('User bien supprimé !');
+      }
+    ).catch(
+      er => console.log(er)
     );
   }
 
