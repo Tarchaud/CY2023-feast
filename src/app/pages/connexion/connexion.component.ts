@@ -10,14 +10,11 @@ import { UsersService } from 'src/app/shared/services/users.service';
 export class ConnexionComponent {
   id : string = '';
   mdp : string = '';
-  // TestAppTest
-  //test@testapp.com
 
   constructor ( public auth : AuthService) {}
 
 
   login() {
-    // this.auth.authentification();
     this.auth.fireAuth();
   }
 
